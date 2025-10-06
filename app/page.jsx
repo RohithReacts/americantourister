@@ -1,13 +1,10 @@
-"use client";
 import Image from "next/image";
-import { Box } from "@radix-ui/themes";
-import { motion } from "framer-motion";
 import AmericanTouristerCards from "@/pages/americancards";
 
 export default function Page() {
   return (
-    <Box className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-smooth">
-      <motion.main className="space-y-24 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-smooth">
+      <main className="space-y-24 py-12">
         <section>
       <Image
         src="/images/travel.webp"
@@ -35,8 +32,8 @@ export default function Page() {
         </div>
       </div>
     </section>
-      </motion.main>
-    </Box>
+      </main>
+    </div>
   );
 }
 

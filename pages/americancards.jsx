@@ -170,7 +170,7 @@ export default function AmericanTouristerCards() {
             </motion.div>
             <motion.div variants={fadeRight} initial="hidden" animate="show">
               <Button asChild variant="secondary">
-                <a href="/americantourister/connect" className="flex gap-2">
+                <a href="/connect" className="flex gap-2">
                   <Send className="h-4 w-4" />
                   Contact Us
                 </a>

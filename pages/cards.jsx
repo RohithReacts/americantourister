@@ -26,7 +26,7 @@ export function CarouselSize() {
         align: "start",
         loop: true,
       }}
-      className="w-full max-w-4xl mx-auto mt-6"
+      className="w-full max-w-4xl mx-15  mt-15"
     >
       <h1 className="mb-3 text-2xl font-medium">Shop Products</h1>
       <h2 className="mb-5 text-xl font-medium">
