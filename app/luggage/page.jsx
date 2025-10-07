@@ -2,9 +2,9 @@
 import React from "react";
 import Image from "next/image";
 import { ShoppingBagIcon } from "lucide-react";
-import { CarouselSize } from "../../pages/cards";
 import { motion } from "framer-motion";
 import LuggageProducts from "@/pages/luggageproducts";
+import CarouselSize from "@/pages/cards";
 
 const leftButton = {
   hidden: { opacity: 0, x: -50 },

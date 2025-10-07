@@ -162,7 +162,10 @@ export default function AmericanTouristerCards() {
           <CardFooter className="flex gap-4 flex-wrap">
             <motion.div variants={fadeLeft} initial="hidden" animate="show">
               <Button asChild>
-                <a href="https://americantourister.in/pages/service-and-warranty" className="flex gap-2">
+                <a
+                  href="https://americantourister.in/pages/service-and-warranty"
+                  className="flex gap-2"
+                >
                   <MonitorDotIcon className="h-4 w-4" />
                   Visit Support
                 </a>
@@ -190,10 +193,22 @@ export default function AmericanTouristerCards() {
           <CardContent>
             <ul className="flex flex-col gap-2 text-sm">
               {[
-                { label: "Damage Policy", href: "https://americantourister.in/pages/damage-policy" },
-                { label: "Care and Cleaning", href: "https://americantourister.in/pages/care-and-cleaning" },
-                { label: "Packing Tips", href: "https://americantourister.in/pages/packing-tips" },
-                { label: "Sustainability", href: "https://americantourister.in/pages/sustainability" },
+                {
+                  label: "Damage Policy",
+                  href: "https://americantourister.in/pages/damage-policy",
+                },
+                {
+                  label: "Care and Cleaning",
+                  href: "https://americantourister.in/pages/care-and-cleaning",
+                },
+                {
+                  label: "Packing Tips",
+                  href: "https://americantourister.in/pages/packing-tips",
+                },
+                {
+                  label: "Sustainability",
+                  href: "https://americantourister.in/pages/sustainability",
+                },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -211,4 +226,3 @@ export default function AmericanTouristerCards() {
     </section>
   );
 }
-

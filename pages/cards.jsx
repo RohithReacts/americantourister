@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -11,14 +11,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export function CarouselSize() {
+export default function CarouselSize() {
   const images = [
     "/images/baby.jpg",
     "/images/circurity.jpg",
     "/images/fast.jpg",
     "/images/alcove.jpg",
     "/images/air.webp",
-  ]; // store images in public/assets folder
+  ]; // Make sure these are in public/images
 
   return (
     <Carousel
@@ -26,12 +26,14 @@ export function CarouselSize() {
         align: "start",
         loop: true,
       }}
-      className="w-full max-w-4xl mx-15  mt-15"
+      className="w-full max-w-4xl mx-auto mt-12"
     >
-      <h1 className="mb-3 text-2xl font-medium">Shop Products</h1>
-      <h2 className="mb-5 text-xl font-medium">
-        Our favorite picks for the season
-      </h2>
+      <div className="text-center mb-6">
+        <h1 className="text-2xl font-medium">Shop Products</h1>
+        <h2 className="text-xl font-medium text-muted-foreground">
+          Our favorite picks for the season
+        </h2>
+      </div>
 
       <CarouselContent>
         {images.map((src, index) => (
@@ -56,12 +58,10 @@ export function CarouselSize() {
         ))}
       </CarouselContent>
 
-      {/* Navigation arrows */}
-<div className="flex items-center justify-center gap-4 mt-16">
-  <CarouselPrevious className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 shadow-md" />
-  <CarouselNext className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 shadow-md" />
-</div>
-
+      <div className="flex items-center justify-center gap-4 mt-10">
+        <CarouselPrevious className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 shadow-md" />
+        <CarouselNext className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 shadow-md" />
+      </div>
     </Carousel>
   );
 }

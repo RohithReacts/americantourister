@@ -1,4 +1,6 @@
 "use client";
+
+import React from "react";
 import { useToast } from "@/components/toastprovider";
 import {
   MorphingDialog,
@@ -15,17 +17,12 @@ import { PlusIcon, X } from "lucide-react";
 import { useCart } from "@/components/data/CartContext";
 
 export default function LuggageProducts() {
-      const toast = useToast();
+  const toast = useToast();
   const { addToCart } = useCart();
 
   const products = [
     { name: "Airconic", price: 8137, image: "/images/amtairc.webp", size: 79 },
-    {
-      name: "Circurity +",
-      price: 6200,
-      image: "/images/circurity.webp",
-      size: 77,
-    },
+    { name: "Circurity +", price: 6200, image: "/images/circurity.webp", size: 77 },
     { name: "Diamo", price: 3490, image: "/images/diamo.webp", size: 55 },
     { name: "Bern", price: 7450, image: "/images/bern.jpg", size: 84 },
   ];
@@ -55,15 +52,17 @@ export default function LuggageProducts() {
                   ₹{product.price}
                 </MorphingDialogSubtitle>
               </div>
+
               <div
                 role="button"
                 onClick={(e) => {
                   e.stopPropagation();
                   addToCart(product);
+                  toast.success("Added to Cart successfully");
                 }}
                 className="ml-1 flex h-6 w-6 items-center justify-center rounded-lg border border-zinc-950/10 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800 dark:border-zinc-50/10 dark:bg-zinc-900 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
               >
-                <PlusIcon onClick={() => toast.success("Added to Cart successfully")} size={12}  />
+                <PlusIcon size={12} />
               </div>
             </div>
           </MorphingDialogTrigger>
@@ -82,18 +81,19 @@ export default function LuggageProducts() {
                 <MorphingDialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50">
                   {product.name}
                 </MorphingDialogTitle>
-                <MorphingDialogSubtitle className="text-zinc-700 dark:text-zinc-400"></MorphingDialogSubtitle>
+
                 <p className="mt-2 text-zinc-500">
                   Price:{" "}
                   <span className="font-semibold text-zinc-800 dark:text-zinc-100">
                     ₹{product.price}
                   </span>
                 </p>
+
                 <MorphingDialogDescription>
                   <p className="mt-2 text-zinc-500">{product.size} cms</p>
                 </MorphingDialogDescription>
-              
               </div>
+
               <MorphingDialogClose className="absolute right-4 top-4 rounded-full p-1 text-zinc-800 hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800">
                 <X size={20} />
               </MorphingDialogClose>
