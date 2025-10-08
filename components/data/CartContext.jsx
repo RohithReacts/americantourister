@@ -1,33 +1,61 @@
 "use client";
-import React, { createContext, useContext, useState } from "react";
 
-// Create a context for the cart
-const CartContext = createContext();
+import React, { createContext, useContext, useState, useMemo } from "react";
 
-// Provider component that wraps your app and makes cart state available
+// Create a Cart Context
+const CartContext = createContext(null);
+
+// CartProvider — wraps your entire app
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  // Add item to cart
+  // Add an item to the cart
   const addToCart = (item) => {
-    setCart((prev) => [...prev, item]);
+    setCart((prevCart) => [...prevCart, item]);
   };
 
-  // Remove item from cart by index
+  // Remove an item from the cart by index
   const removeItemFromCart = (index) => {
-    setCart((prev) => prev.filter((_, i) => i !== index));
+    setCart((prevCart) => prevCart.filter((_, i) => i !== index));
   };
 
-  // Provide all cart functions and state
+  // Memoize value to prevent unnecessary re-renders
+  const value = useMemo(
+    () => ({
+      cart,
+      addToCart,
+      removeItemFromCart,
+      drawerOpen,
+      setDrawerOpen,
+    }),
+    [cart, drawerOpen]
+  );
+
   return (
-    <CartContext.Provider
-      value={{ cart, addToCart, removeItemFromCart, drawerOpen, setDrawerOpen }}
-    >
+    <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
   );
 }
 
-// Hook to use cart context
-export const useCart = () => useContext(CartContext);
+// Custom Hook — safely access Cart Context
+export function useCart() {
+  const context = useContext(CartContext);
+
+  // SSR-safe: avoid crash during Next.js build
+  if (context === null) {
+    if (typeof window === "undefined") {
+      return {
+        cart: [],
+        addToCart: () => {},
+        removeItemFromCart: () => {},
+        drawerOpen: false,
+        setDrawerOpen: () => {},
+      };
+    }
+    throw new Error("useCart must be used within a <CartProvider>");
+  }
+
+  return context;
+}

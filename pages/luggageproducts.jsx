@@ -14,12 +14,13 @@ import {
   MorphingDialogContainer,
 } from "@/components/motion-primitives/morphing-dialog";
 import { PlusIcon, X } from "lucide-react";
-import { useCart } from "@/components/data/CartContext";
+import { useCart } from "@/components/data/cartcontext"; // ✅ FIXED: case-sensitive import
 
 export default function LuggageProducts() {
   const toast = useToast();
   const { addToCart } = useCart();
 
+  // Product list
   const products = [
     { name: "Airconic", price: 8137, image: "/images/amtairc.webp", size: 79 },
     { name: "Circurity +", price: 6200, image: "/images/circurity.webp", size: 77 },
@@ -27,46 +28,52 @@ export default function LuggageProducts() {
     { name: "Bern", price: 7450, image: "/images/bern.jpg", size: 84 },
   ];
 
+  // Handle Add to Cart with toast
+  const handleAddToCart = (product, e) => {
+    e.stopPropagation();
+    addToCart(product);
+    toast.success(`${product.name} added to cart successfully!`);
+  };
+
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 p-4">
       {products.map((product, index) => (
         <MorphingDialog
           key={index}
           transition={{ type: "spring", bounce: 0.05, duration: 0.25 }}
         >
+          {/* Trigger (Card) */}
           <MorphingDialogTrigger
             style={{ borderRadius: "12px" }}
-            className="flex max-w-[250px] flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900"
+            className="flex max-w-[250px] flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 shadow-sm hover:shadow-md transition-shadow duration-200"
           >
             <MorphingDialogImage
               src={product.image}
               alt={product.name}
               className="h-60 w-80 object-cover"
             />
+
             <div className="flex grow flex-row items-end justify-between px-3 py-2">
               <div>
-                <MorphingDialogTitle className="text-zinc-950 dark:text-zinc-50">
+                <MorphingDialogTitle className="text-zinc-950 dark:text-zinc-50 text-sm font-semibold">
                   {product.name}
                 </MorphingDialogTitle>
-                <MorphingDialogSubtitle className="text-zinc-700 dark:text-zinc-400">
+                <MorphingDialogSubtitle className="text-zinc-700 dark:text-zinc-400 text-sm">
                   ₹{product.price}
                 </MorphingDialogSubtitle>
               </div>
 
               <div
                 role="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  addToCart(product);
-                  toast.success("Added to Cart successfully");
-                }}
-                className="ml-1 flex h-6 w-6 items-center justify-center rounded-lg border border-zinc-950/10 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800 dark:border-zinc-50/10 dark:bg-zinc-900 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+                onClick={(e) => handleAddToCart(product, e)}
+                className="ml-1 flex h-6 w-6 items-center justify-center rounded-lg border border-zinc-950/10 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800 dark:border-zinc-50/10 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
               >
                 <PlusIcon size={12} />
               </div>
             </div>
           </MorphingDialogTrigger>
 
+          {/* Dialog Content */}
           <MorphingDialogContainer>
             <MorphingDialogContent
               style={{ borderRadius: "24px" }}
@@ -75,14 +82,14 @@ export default function LuggageProducts() {
               <MorphingDialogImage
                 src={product.image}
                 alt={product.name}
-                className="h-80 w-full"
+                className="h-80 w-full object-cover"
               />
               <div className="p-6">
-                <MorphingDialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50">
+                <MorphingDialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50 font-semibold">
                   {product.name}
                 </MorphingDialogTitle>
 
-                <p className="mt-2 text-zinc-500">
+                <p className="mt-2 text-zinc-500 text-sm">
                   Price:{" "}
                   <span className="font-semibold text-zinc-800 dark:text-zinc-100">
                     ₹{product.price}
@@ -90,7 +97,9 @@ export default function LuggageProducts() {
                 </p>
 
                 <MorphingDialogDescription>
-                  <p className="mt-2 text-zinc-500">{product.size} cms</p>
+                  <p className="mt-2 text-zinc-500 text-sm">
+                    Size: {product.size} cm
+                  </p>
                 </MorphingDialogDescription>
               </div>
 

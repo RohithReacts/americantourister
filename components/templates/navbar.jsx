@@ -12,7 +12,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { useToast } from "@/components/toastprovider";
-import { useCart } from "@/components/data/CartContext";
+import { useCart } from "@/components/data/cartcontext";
 
 export function Navbar() {
 

@@ -10,7 +10,7 @@ import NextTopLoader from "nextjs-toploader";
 import { ToastProvider } from "@/components/toastprovider";
 import { Box, Theme } from "@radix-ui/themes";
 import ScrollToTop from "@/components/top";
-import { CartProvider } from "@/components/data/CartContext";
+import { CartProvider } from "@/components/data/cartcontext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
