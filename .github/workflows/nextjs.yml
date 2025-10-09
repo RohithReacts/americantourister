@@ -1,4 +1,4 @@
-name: Deploy Next.js site to Pages
+name: Deploy Next.js site to GitHub Pages
 
 on:
   push:
@@ -29,14 +29,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build project
-        run: npm run build
+      # 👇 Build and export static site
+      - name: Build and Export Next.js site
+        run: |
+          npm run build
+          npm run export
 
-      - name: Upload artifact
+      # 👇 Upload the 'dist' folder as artifact for deployment
+      - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist  # ✅ Correct path for Next.js 'output: export'
-  
+          path: ./dist
+
   deploy:
     environment:
       name: github-pages

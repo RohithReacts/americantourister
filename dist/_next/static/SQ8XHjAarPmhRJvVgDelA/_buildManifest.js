@@ -1,19 +1,24 @@
 self.__BUILD_MANIFEST = {
   "/_error": [
-    "./static/chunks/5b3f7d494927fabd.js"
+    "./static/chunks/23abb7c68bc2ff32.js"
   ],
   "/americancards": [
-    "./static/chunks/2c11d19d3070fe26.js"
+    "./static/chunks/0a3a7c065644d2f2.js"
   ],
   "/cards": [
-    "./static/chunks/df61d84db92687ee.js"
+    "./static/chunks/b7c3edaec148e408.js"
   ],
   "/luggageproducts": [
-    "./static/chunks/7d0a9c78f9966732.js"
+    "./static/chunks/51c36071ffd080ee.js"
   ],
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/americantourister//_next/:path+",
+        "destination": "/americantourister/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [
