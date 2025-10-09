@@ -8,9 +8,9 @@ import { Suspense } from "react";
 import Loading from "./loading";
 import NextTopLoader from "nextjs-toploader";
 import { ToastProvider } from "@/components/toastprovider";
-import { Box, Theme } from "@radix-ui/themes";
+import {  Theme } from "@radix-ui/themes";
 import ScrollToTop from "@/components/top";
-import { CartProvider } from "@/components/data/cartcontext";
+import { CartProvider } from "@/components/data/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

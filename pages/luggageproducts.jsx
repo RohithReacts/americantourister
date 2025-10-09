@@ -14,7 +14,7 @@ import {
   MorphingDialogContainer,
 } from "@/components/motion-primitives/morphing-dialog";
 import { PlusIcon, X } from "lucide-react";
-import { useCart } from "@/components/data/cartcontext"; // ✅ FIXED: case-sensitive import
+import { useCart } from "@/components/data/CartContext";
 
 export default function LuggageProducts() {
   const toast = useToast();
