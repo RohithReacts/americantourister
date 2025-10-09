@@ -12,7 +12,7 @@ const leftButton = {
 
 export default function Backpacks() {
   return (
-    <section className="px-4 sm:px-6 py-12 md:py-20 bg-white dark:bg-neutral-950 transition-colors duration-300">
+    <section className="px-4 sm:px-6 py-12 md:py-20 transition-colors duration-300">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10">
         {/* Left: Product Image */}
         <div className="w-full sm:w-[320px] md:w-[380px] lg:w-[420px] rounded-2xl overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-700">
