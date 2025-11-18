@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useToast } from "@/components/toastprovider";
+import { toast } from "sonner"; // ⬅️ ADD SONNER
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -17,7 +17,6 @@ import { PlusIcon, X } from "lucide-react";
 import { useCart } from "@/components/data/CartContext";
 
 export default function LuggageProducts() {
-  const toast = useToast();
   const { addToCart } = useCart();
 
   // Product list
@@ -32,7 +31,11 @@ export default function LuggageProducts() {
   const handleAddToCart = (product, e) => {
     e.stopPropagation();
     addToCart(product);
-    toast.success(`${product.name} added to cart successfully!`);
+
+    // ⬅️ SONNER TOAST
+    toast.success(`${product.name} added to cart!`, {
+      description: `₹${product.price}`,
+    });
   };
 
   return (
@@ -84,6 +87,7 @@ export default function LuggageProducts() {
                 alt={product.name}
                 className="h-80 w-full object-cover"
               />
+
               <div className="p-6">
                 <MorphingDialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50 font-semibold">
                   {product.name}

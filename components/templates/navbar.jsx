@@ -11,7 +11,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { useToast } from "@/components/toastprovider";
 import { useCart } from "@/components/data/CartContext";
 
 export function Navbar() {
@@ -171,7 +170,6 @@ export function Navbar() {
 
 /* Cart Content (shared between desktop & mobile drawers) */
 function CartContent({ cart, removeItemFromCart, setDrawerOpen }) {
-      const toast = useToast();
 
   return (
     <>
@@ -215,9 +213,9 @@ function CartContent({ cart, removeItemFromCart, setDrawerOpen }) {
               </div>
               <button
                 onClick={() => removeItemFromCart(idx)}
-                className="p-1 rounded hover:bg-red-100 dark:hover:bg-red-900"
+                className="p-3 cursor-pointer"
               >
-                <Trash2 onClick={() => toast.error("removed from the cart.")} className="h-4 w-4 text-red-500" />
+                <Trash2 className="w-5"  />
               </button>
             </div>
           ))
