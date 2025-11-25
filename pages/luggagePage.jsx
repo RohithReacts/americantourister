@@ -11,8 +11,7 @@ const leftButton = {
   show: { opacity: 1, x: 0, transition: { duration: 0.6 } },
 };
 
-export default function Luggage() {
-
+export default function LuggagePage() {
   return (
     <section className="px-4 sm:px-6 lg:px-12 py-12 md:py-20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10">

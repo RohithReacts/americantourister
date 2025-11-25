@@ -19,10 +19,10 @@ export function Navbar() {
   const { cart, removeItemFromCart, drawerOpen, setDrawerOpen } = useCart();
 
   const navItems = [
-    { href: "/luggage", label: "Luggage" },
-    { href: "/backpacks", label: "Backpacks" },
-    { href: "/duffles", label: "Duffles" },
-    { href: "/connect", label: "Connect" },
+    { href: "#luggage", label: "Luggage" },
+    { href: "#backpacks", label: "Backpacks" },
+    { href: "#duffles", label: "Duffles" },
+    { href: "#connect", label: "Connect" },
   ];
 
   return (

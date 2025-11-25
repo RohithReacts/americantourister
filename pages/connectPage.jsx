@@ -35,7 +35,7 @@ function MagneticSocialLink({ children, link }) {
   );
 }
 
-export default function AmtConnect() {
+export default function ConnectPage() {
   return (
     <div>
       <section
